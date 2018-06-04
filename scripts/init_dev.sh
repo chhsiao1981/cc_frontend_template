@@ -29,11 +29,9 @@ rm src/index.js
 rm package.json
 
 # cp all to current dir
-rm -rf frontend_template/.git*
-ln frontend_template/setup.py ./
-ln -s frontend_template/scaffolds ./
-ln -s frontend_template/scripts ./
-ln -s frontend_template/config.js.tmpl ./
+rm -rf cc/.git*
+ln -s cc/scripts ./
+ln -s cc/config.js.tmpl ./
 
 # post setup - git
 rm -rf .git
