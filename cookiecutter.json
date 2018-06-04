@@ -1,0 +1,29 @@
+{
+  "pkg": "",
+  "module": "",
+
+  "project": "",
+
+  "pkg_name": "",
+  "include_pkg": "",
+
+  "package_dir": "",
+  "include_package_dir": "",
+  "test_package_dir": "",
+
+  "PKG": "",
+  "MODULE": "",
+  "PKG_NAME": "",
+  "INCLUDE_PKG": "",
+  "PACKAGE_DIR": "",
+  "INCLUDE_PACKAGE_DIR": "",
+  "TEST_PACKAGE_DIR": "",
+
+  "Pkg": "",
+  "Module": "",
+  "PkgName": "",
+  "IncludePkg": "",
+  "PackageDir": "",
+  "IncludePackageDir": "",
+  "TestPackageDir": ""
+}
