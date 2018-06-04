@@ -1,62 +1,83 @@
 import * as superagent from 'superagent-bluebird-promise'
+import { createDuck } from 'redux-duck'
 import config from 'config'
 import Cookie from 'js-cookie'
 import { queryToString } from '../utils/utils'
-const { API_ROOT } = config
+const { API_ROOT, AUTH_ROOT } = config
 
 export const CALL_API = Symbol('Call API')
 
-const callApi = (endpoint, {query, method='get', params, files, json}, isWithCredentials=true) => {
-  if (endpoint.indexOf(API_ROOT) === - 1) {
+const myDuck = createDuck('middleware', 'API')
+const REQUEST = myDuck.defineType('REQUEST')
+const SUCCESS = myDuck.defineType('SUCCESS')
+const FAILURE = myDuck.defineType('FAILURE')
+
+export const API_TYPES = [REQUEST, SUCCESS, FAILURE]
+
+const callApi = (endpoint, { query, method = 'get', params, files, json }, isWithCredentials=true) => {
+  if (endpoint.indexOf(API_ROOT) === -1) {
     endpoint = API_ROOT + endpoint
   }
-  
-  if(query) {
+
+  if (query) {
     endpoint = `${endpoint}?${queryToString(query)}`
   }
 
   let request = superagent[method](endpoint)
 
-  if(files) {
-    for(let name in files) {
+  if (files) {
+    for (let name in files) {
       request = request.attach(name, files[name], files[name].name)
     }
     for (let k in params) {
       request = request.field(k, params[k])
     }
-  }
-  else if(params) {
+  } else if (params) {
+    params = _stringifyParams(params)
     request = request.set('Content-Type', 'application/x-www-form-urlencoded')
     request = request.send(params)
-  }
-  else if(json) {
+  } else if (json) {
     request = request.send(json)
   }
 
-  if(isWithCredentials) {
-    let allCookies = Cookie.get()
+  if (isWithCredentials) {
     let csrftoken = Cookie.get('csrftoken') || ''
-    request = request.set({'X-CSRFToken': csrftoken})
+    request = request.set({ 'X-CSRFToken': csrftoken })
     request = request.withCredentials()
   }
-  
+
   return request
     .then((res) => {
-      const json = JSON.parse(res.text)
+      console.log('middleware.api: after request: res:', res)
 
-      if(res.statusText !== 'OK') {
+      if (res.status !== 200) {
         return Promise.reject(res)
       }
+
+      const json = JSON.parse(res.text)
       return json
     })
-    .catch((res) => {
-      console.error('middleware.api: unable to call api: res:', res)
-      if(res && res.status === 401) {
+    .catch((res, ...e) => {
+      console.error('middleware.api: unable to call api: res:', res, 'e:', e)
+      if (res && res.status === 401) {
         let next_url = encodeURIComponent(window.location.href)
-        let url = `/signup/?next=${next_url}`
+        let url = `${AUTH_ROOT}/login?next=${next_url}`
         return window.location.href = url
       }
+
+      return Promise.reject(res)
     })
+}
+
+const _stringifyParams = (params) => {
+  return Object.keys(params).reduce((r, x, i) => {
+    let val = params[x]
+    if(typeof val === 'object') {
+      val = JSON.stringify(val)
+    }
+    r[x] = val
+    return r
+  }, {})
 }
 
 export default store => next => action => {
@@ -66,8 +87,9 @@ export default store => next => action => {
     return next(action)
   }
 
-  let {endpoint, method, query, params, files, json} = callAPI
-  const {types, bailout} = callAPI
+  let { endpoint, method, query, params, files, json } = callAPI
+  const { bailout } = callAPI
+  let types = typeof callAPI.types === 'undefined' ? API_TYPES : callAPI.types
 
   if (typeof endpoint === 'function') {
     endpoint = endpoint(store.getState())
@@ -92,7 +114,7 @@ export default store => next => action => {
   if (bailout && bailout(store.getState())) {
     return Promise.resolve()
   }
-  
+
   let actionWith = (data) => {
     const finalAction = Object.assign({}, action, data)
     delete finalAction[CALL_API]
@@ -100,17 +122,24 @@ export default store => next => action => {
   }
 
   const [requestType, successType, failureType] = types
-  
-  next(actionWith({type: requestType}))
 
-  return callApi(endpoint, {method, query, params, files, json}).then(
-    response => next(actionWith({
-      response, query,
-      type: successType
-    })),
-    error => next(actionWith({
-      type: failureType,
-      error: error.message || 'Something bad happened'
-    }))
+  next(actionWith({ type: requestType }))
+
+  return callApi(endpoint, { method, query, params, files, json }).then(
+    response => {
+      console.log('middleware: after callApi: response:', response)
+      return next(actionWith({
+        response,
+        query,
+        type: successType
+      }))
+    },
+    error => {
+      console.log('middleware: after callApi: error:', error)
+      return next(actionWith({
+        type: failureType,
+        error: error.message || 'Something bad happened'
+      }))
+    }
   )
 }

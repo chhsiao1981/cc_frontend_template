@@ -11,8 +11,6 @@ import styles from './{{cookiecutter.Module}}.css'
 // {{cookiecutter.module}}
 import * as do{{cookiecutter.Module}} from '../reducers/{{cookiecutter.Module}}'
 
-const cx = classnames.bind(styles)
-
 class {{cookiecutter.Module}} extends PureComponent {
   componentWillMount() {
     const {location: {search}, actions: {do{{cookiecutter.Module}}}} = this.props

@@ -8,8 +8,6 @@ import Empty from '../components/Empty'
 
 import styles from './{{cookiecutter.Module}}.css'
 
-const cx = classnames.bind(styles)
-
 class {{cookiecutter.Module}} extends PureComponent {
   render() {
     const { myId, {{cookiecutter.moduleLCamel}}, actions: {do{{cookiecutter.Module}}}} = this.props

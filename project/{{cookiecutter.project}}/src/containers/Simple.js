@@ -6,8 +6,6 @@ import Empty from '../components/Empty'
 
 import styles from './Simple.css'
 
-const cx = classnames.bind(styles)
-
 class Simple extends PureComponent {
   render() {
     const {myId, simple, actions: {doSimple}} = this.props
