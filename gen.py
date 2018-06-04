@@ -32,7 +32,7 @@ if len(full_name_list) == 1:
 
     pkg_name = pkg
     project_name = project
-    include_pkg = 'cm' + pkg
+    include_pkg = pkg
 
     package_dir = '.'
     include_package_dir = "."
@@ -43,10 +43,11 @@ else:
     project = full_name_list[-1]
 
     pkg_name = pkg
-    include_pkg = 'cm' + pkg
+    project_name = project
+    include_pkg = pkg
 
     package_dir = '/'.join(full_name_list[:-1])
-    include_package_dir = '/'.join(['cm' + each_pkg for each_pkg in full_name_list[:-1]])
+    include_package_dir = '/'.join([each_pkg for each_pkg in full_name_list[:-1]])
     test_package_dir = '/'.join(['test_' + each_pkg for each_pkg in full_name_list[:-1]])
 
 
