@@ -5,9 +5,9 @@ import { getUUID, toCamelCase } from '../utils/utils'
 
 import * as utils from './utils'
 
-export const myClass = '{{MDOULE}}'
+export const myClass = '{{cookiecutter.MODULE}}'
 
-export const myDuck = createDuck(myClass, '{{project_name}}')
+export const myDuck = createDuck(myClass, '{{cookiecutter.project_name}}')
 
 const INIT = myDuck.defineType('INIT')
 const ADD_CHILD = myDuck.defineType('ADD_CHILD')

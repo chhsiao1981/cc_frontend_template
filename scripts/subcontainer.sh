@@ -8,4 +8,4 @@ fi
 
 subcontainer=$1
 
-python cc/gen.py "${subcontainer}"
+python cc/gen.py subcontainer "${subcontainer}"
