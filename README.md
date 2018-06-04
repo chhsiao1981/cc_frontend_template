@@ -14,6 +14,10 @@ Updating:
     npm install--save --save-exact react-scripts@1.1.4
     cd node_modules/react-scripts/config; rm webpack.config.dev.js; ln ../../../config/webpack.config.dev.js ./; rm webpack.config.prod.js; ln ../../../config/webpack.config.prod.js ./; cd ../../../;
 
+css-modules:
+
+    ./scripts/use_cssmodules.sh
+
 Introduction
 -----
 This template intends to efficiently develop with the following libraries:
