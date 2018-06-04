@@ -54,7 +54,7 @@ else:
 the_dict = {
     'pkg': pkg,
     'module': module,
-    'project': project,
+    # 'project': project,
 
     'pkg_name': pkg_name,
     'project_name': project_name,
