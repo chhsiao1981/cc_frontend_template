@@ -20,6 +20,14 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
+const es6_srcs = [
+  paths.appSrc,
+  paths.appNodeModules + '/camelcase',
+  paths.appNodeModules + '/decamelize',
+  paths.appNodeModules + '/query-string',
+  paths.appNodeModules + '/strict-uri-encode',
+]
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
@@ -270,7 +278,7 @@ module.exports = {
       // Make sure to add the new loader(s) before the "file" loader.
       {
         test: /\.(js|jsx)$/,
-        include: [paths.appSrc, paths.appNodeModules + '/camelcase'],
+        include: es6_srcs,
         loader: 'ify-loader',
         enforce: 'post',
       },

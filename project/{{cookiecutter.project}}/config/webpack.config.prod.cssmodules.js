@@ -21,6 +21,14 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 
+const es6_srcs = [
+  paths.appSrc,
+  paths.appNodeModules + '/camelcase',
+  paths.appNodeModules + '/decamelize',
+  paths.appNodeModules + '/query-string',
+  paths.appNodeModules + '/strict-uri-encode',
+]
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
 const publicPath = paths.servedPath;
@@ -150,7 +158,7 @@ module.exports = {
             loader: require.resolve('eslint-loader'),
           },
         ],
-        include: [paths.appSrc, paths.appNodeModules + '/camelcase'],
+        include: es6_srcs,
       },
       {
         // "oneOf" will traverse all following loaders until one will
@@ -170,7 +178,7 @@ module.exports = {
           // Process JS with Babel.
           {
             test: /\.(js|jsx|mjs)$/,
-            include: [paths.appSrc, paths.appNodeModules + '/camelcase'],
+            include: es6_srcs,
             loader: require.resolve('babel-loader'),
             options: {
               // @remove-on-eject-begin
