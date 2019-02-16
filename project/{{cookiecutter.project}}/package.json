@@ -3,44 +3,43 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.1.1",
-    "classnames": "^2.2.5",
+    "bootstrap": "^4.2.1",
+    "classnames": "^2.2.6",
     "camelcase": "^5.0.0",
     "css-modulesify": "^0.28.0",
     "decamelize": "^2.0.0",
     "humps": "^2.0.1",
     "ify-loader": "^1.1.0",
-    "immutable": "^3.8.2",
+    "immutable": "^4.0.0",
     "js-cookie": "^2.2.0",
-    "lodash": "^4.17.10",
-    "moment": "^2.22.2",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "moment-timezone": "^0.5.17",
-    "node-uuid": "^1.4.8",
-    "normalize.css": "^8.0.0",
-    "papaparse": "^4.5.0",
-    "query-string": "^6.1.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "normalize.css": "^8.0.1",
+    "papaparse": "^4.6.3",
+    "query-string": "^6.2.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
     "redux-duck": "^1.0.2",
-    "react-ga": "^2.5.3",
-    "react-redux": "^5.0.7",
+    "react-ga": "^2.5.7",
+    "react-redux": "^6.0.0",
     "react-router-redux": "^4.0.8",
-    "react-router-dom": "^4.2.2",
-    "react-widgets": "^4.2.6",
-    "redux": "^4.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-widgets": "^4.4.9",
+    "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "superagent": "^3.8.3",
-    "superagent-bluebird-promise": "^4.2.0"
+    "superagent": "^4.1.0",
+    "superagent-bluebird-promise": "^4.2.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "react-hot-loader": "^4.2.0",
-    "react-scripts": "^1.1.4",
-    
-    "redux-devtools": "^3.4.1",
+    "react-scripts": "^2.1.5",
+    "redux-devtools": "^3.5.0",
     "redux-devtools-dock-monitor": "^1.1.3",
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-logger": "^3.0.6",
-    "less": "^3.0.4",
+    "less": "^3.9.0",
     "less-loader": "^4.1.0"
   },
   "scripts": {
@@ -48,5 +47,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
