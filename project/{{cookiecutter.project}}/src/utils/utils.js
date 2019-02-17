@@ -1,4 +1,4 @@
-import uuid from 'node-uuid'
+import uuid from 'uuid'
 import Immutable from 'immutable'
 import camelCase from 'camelcase'
 import decamelize from 'decamelize'

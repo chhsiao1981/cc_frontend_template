@@ -9,7 +9,7 @@
     "decamelize": "^2.0.0",
     "humps": "^2.0.1",
     "ify-loader": "^1.1.0",
-    "immutable": "^4.0.0-r12",
+    "immutable": "^3.8.2",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
