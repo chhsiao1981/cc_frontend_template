@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
-    "classnames": "^2.2.6",
     "camelcase": "^5.0.0",
     "css-modulesify": "^0.28.0",
     "decamelize": "^2.0.0",

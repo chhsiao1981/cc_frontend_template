@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import classnames from 'classnames/bind'
 import Immutable from 'immutable'
 import { getUUID, getRootId, getRoot, getChildId, getChildIds, parseQueryString } from '../utils/utils'
 import Empty from '../components/Empty'
 
 import logo from '../logo.svg'
 
-import styles from './App.css'
+import styles from './App.module.css'
 
 // app
 import * as doApp from '../reducers/App'
@@ -17,18 +16,16 @@ import * as doApp from '../reducers/App'
 import Simple from './Simple'
 import * as doSimple from '../reducers/Simple'
 
-const cx = classnames.bind(styles)
-
 class App extends PureComponent {
   componentWillMount() {
     const {location: {search}, actions: {doApp}} = this.props
     const query = parseQueryString(search)
-    
+
     let myId = getUUID()
-    
+
     doApp.init(myId, query)
   }
-  
+
   render() {
     const {app, actions: { doApp }} = this.props
 
@@ -36,7 +33,7 @@ class App extends PureComponent {
     let me = getRoot(this.props)
 
     if(!myId) return (<Empty />)
-    
+
     const simpleIds = getChildIds(me, 'SIMPLE').toJS()
     const count = me.get('count', 0)
 
@@ -49,7 +46,7 @@ class App extends PureComponent {
       console.log('onClickInc2: start: myId:', myId)
       doApp.increaseCount2(myId)
     }
-    
+
     var onClickAddSimple = (e) => {
       console.log('onClickAddSimple: start: myId:', myId)
       doApp.addSimple(myId)
@@ -59,14 +56,14 @@ class App extends PureComponent {
       console.log('onClickRemoveSimples: start: myId:', myId)
       doApp.removeSimples(myId, simpleIds)
     }
-    
+
     return (
-      <div className={cx('App')}>
-        <div className={cx('header')}>
-          <img src={logo} className={cx('logo')} alt="logo" />
+      <div className={styles['App']}>
+        <div className={styles['header']}>
+          <img src={logo} className={styles['logo']} alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className={cx('intro')}>
+        <p className={styles['intro']}>
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <code>

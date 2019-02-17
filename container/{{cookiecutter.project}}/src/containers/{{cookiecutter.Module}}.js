@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import classnames from 'classnames/bind'
 import Immutable from 'immutable'
 import { getUUID, getRootId, getRoot, getChildId, getChildIds, parseQueryString } from '../utils/utils'
 import Empty from '../components/Empty'
 
-import styles from './{{cookiecutter.Module}}.css'
+import styles from './{{cookiecutter.Module}}.module.css'
 
 // {{cookiecutter.module}}
 import * as do{{cookiecutter.Module}} from '../reducers/{{cookiecutter.Module}}'
@@ -15,9 +14,9 @@ class {{cookiecutter.Module}} extends PureComponent {
   componentWillMount() {
     const {location: {search}, actions: {do{{cookiecutter.Module}}}} = this.props
     const query = parseQueryString(search)
-    
+
     let myId = getUUID()
-    
+
     do{{cookiecutter.Module}}.init(myId, query)
   }
 
@@ -31,9 +30,9 @@ class {{cookiecutter.Module}} extends PureComponent {
     return (
       <div>
         <div>Hello {{cookiecutter.Module}}: {myId}</div>
-      </div>  
+      </div>
     )
-  }  
+  }
 }
 
 const mapStateToProps = (state, ownProps) => ({

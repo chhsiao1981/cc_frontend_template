@@ -1,16 +1,15 @@
 import React, { PureComponent } from 'react'
-import classnames from 'classnames/bind'
 import Empty from './Empty'
-import styles from './{{cookiecutter.Module}}.css'
+import styles from './{{cookiecutter.Module}}.module.css'
 
 class {{cookiecutter.Module}} extends PureComponent {
   render() {
     const {...params} = this.props
-    
+
     return (
       <div>
         Hello {{cookiecutter.Module}}
-      </div>  
+      </div>
     )
   }
 }

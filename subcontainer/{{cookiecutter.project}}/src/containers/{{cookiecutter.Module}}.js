@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import classnames from 'classnames/bind'
 import Immutable from 'immutable'
 import { getUUID, getRootId, getRoot, getChildId, getChildIds } from '../utils/utils'
 import Empty from '../components/Empty'
 
-import styles from './{{cookiecutter.Module}}.css'
+import styles from './{{cookiecutter.Module}}.module.css'
 
 class {{cookiecutter.Module}} extends PureComponent {
   render() {
@@ -18,9 +17,9 @@ class {{cookiecutter.Module}} extends PureComponent {
     return (
       <div>
         <div>Hello {{cookiecutter.Module}}: {myId}</div>
-      </div>  
+      </div>
     )
-  }  
+  }
 }
 
 export default {{cookiecutter.Module}}
