@@ -6,7 +6,7 @@ This is based on https://github.com/chhsiao1981/cc_frontend_template.git
 Install
 ----------
 
-    git clone [repo] .; ./scripts/init_cookiecutter.sh; npm install; ln -s ../config.js node_modules/config.js; rm node_modules/react-scripts/config/webpack.config.js; cd node_modules/react-scripts/config; ln ../../../config/webpack.config.js ./; cd ../../../; npm start
+    git clone [repo] .; ./scripts/clone_proj.sh
 
 Development
 ----------
