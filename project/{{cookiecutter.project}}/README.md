@@ -18,3 +18,8 @@ Development
 
 * remember to add reducers to src/reducers/index.js
 * remember to add container-page to src/Routes.js
+
+Update react-scripts
+-----------
+
+    ./scripts/update_proj.sh [version]

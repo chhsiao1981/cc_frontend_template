@@ -11,8 +11,7 @@ This is the frontend development template based on cookie-cutter and create-reac
 
 Updating:
 
-    npm install--save --save-exact react-scripts@3.0.1
-    cd node_modules/react-scripts/config; rm webpack.config.js; ln ../../../config/webpack.config.js ./; cd ../../../;
+    ./scripts/update_proj.sh [version]
 
 Introduction
 -----
