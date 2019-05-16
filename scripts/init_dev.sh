@@ -47,4 +47,4 @@ fi
 git init; git add .; git commit -m "init dev"
 
 # cookie-cutter
-pip install -e git+https://github.com/chhsiao1981/cookiecutter.git@hsiao.skip-if-file-exists#egg=cookiecutter
+./scripts/init_cookiecutter.sh

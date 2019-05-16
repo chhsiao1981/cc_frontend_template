@@ -25,4 +25,4 @@ echo "current_dir: "
 pwd
 
 # cookie-cutter
-pip install -e git+https://github.com/chhsiao1981/cookiecutter.git@hsiao.skip-if-file-exists#egg=cookiecutter
+pip install -e git+https://github.com/chhsiao1981/cookiecutter.git#egg=cookiecutter
